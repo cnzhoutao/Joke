@@ -1,6 +1,8 @@
 package com.example.nanke.joke;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +34,9 @@ public class MyAdpter extends RecyclerView.Adapter<MyAdpter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         MyJoke joke = mData.get(position);
         holder.title.setText(joke.getTitle());
-        holder.content.setText(joke.getContent());
+       // holder.content.setText(joke.getContent());
+        Spanned sp = Html.fromHtml( joke.getContent() );
+        holder.content.setText(sp);
     }
 
 

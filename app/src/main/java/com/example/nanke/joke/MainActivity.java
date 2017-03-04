@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
@@ -27,8 +28,9 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private List<MyJoke> jokes;
+    private List<MyJoke> jokes=new ArrayList<>();
     private OkHttpClient okHttpClient;
+
     private Handler handler = new Handler() {
 
         @Override
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             jokes = (List<MyJoke>) msg.obj;
             MyAdpter adpter = new MyAdpter(jokes);
             StaggeredGridLayoutManager layoutManager =
-                    new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
+                    new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setAdapter(adpter);
         }
@@ -77,7 +79,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void pharseJson(String json) {
-      
+        try {
+            JSONArray jsonArray=new JSONArray(json);
+            for(int i=0;i<jsonArray.length();i++){
+                JSONObject jsonObject=jsonArray.getJSONObject(i);
+                MyJoke joke=new MyJoke();
+                joke.setTitle(jsonObject.getString("title"));
+                joke.setContent(jsonObject.getString("content"));
+                joke.setUrl(jsonObject.getString("url"));
+                joke.setPoster(jsonObject.getString("poster"));
+                System.out.println(jsonObject.getString("title"));
+                jokes.add(joke);
+            }
+            Message message=new Message();
+            message.obj=jokes;
+            handler.sendMessage(message);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 
