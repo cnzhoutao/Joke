@@ -55,4 +55,17 @@ public class MyAdpter extends RecyclerView.Adapter<MyAdpter.ViewHolder> {
             content = (TextView) itemView.findViewById(R.id.content);
         }
     }
+
+    /**
+     * 下拉刷新，清除原有数据，添加新数据
+     *
+     * @param newData
+     */
+
+    public void refreshData(List<MyJoke> newData) {
+        mData.clear();
+        mData.addAll(newData);
+        notifyItemRangeChanged(0, mData.size());
+    }
+
 }
