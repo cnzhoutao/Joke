@@ -16,4 +16,4 @@
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
 
 整体效果
-![image](https://github.com/HelloNanKe/Joke/blob/master/screen.png)
+![image](https://github.com/HelloNanKe/Joke/blob/master/screenG.gif)
