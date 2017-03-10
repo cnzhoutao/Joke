@@ -5,8 +5,6 @@ import com.example.nanke.joke.JavaBean.MyJoke;
 
 import java.util.List;
 
-import org.reactivestreams.Subscriber;
-
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observer;
@@ -22,12 +20,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class HttpMethods {
+
     private static final String BASE_URL = "http://api.laifudao.com/open/";
     private static final int TIME_OUT=4;
     private Retrofit retrofit;
     private ApiService apiService;
 
     private HttpMethods() {
+        /**
+         * 构造函数私有化
+         * 并在构造函数中进行retrofit的初始化
+         */
         OkHttpClient client=new OkHttpClient();
         client.newBuilder().connectTimeout(TIME_OUT, TimeUnit.SECONDS);
 
@@ -50,11 +53,11 @@ public class HttpMethods {
     }
 
     public void getJoke(Observer<List<MyJoke>> observer){
+
         apiService.getData()
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
-
     }
 }

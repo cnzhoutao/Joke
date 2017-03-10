@@ -9,5 +9,11 @@
 
 5.解决了第一次打开时必须要下拉刷新才能显示数据的问题
 
+    compile 'io.reactivex.rxjava2:rxjava:2.0.7'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+
 整体效果
 ![image](https://github.com/HelloNanKe/Joke/blob/master/screen.png)
