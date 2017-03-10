@@ -5,14 +5,6 @@ package com.example.nanke.joke.JavaBean;
  */
 
 public class MyJoke {
-
-    /**
-     * title : 你怎么和我媳妇一个毛病
-     * content : 　　老婆总愿在我酣睡时用咪咪往我嘴唇上蹭……今早又如此，我突然冒出来一句：你怎么和我媳妇一个毛病……我醒了，她走了……
-     * poster :
-     * url : http://www.laifudao.com/wangwen/49129.htm
-     */
-
     private String title;
     private String content;
     private String poster;
